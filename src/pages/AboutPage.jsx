@@ -9,28 +9,10 @@ import { Atom, Target, Users, Lightbulb } from 'lucide-react';
 
 const teamMembers = [
   {
-    name: 'Dr. Maya Chen',
+    name: 'Jagadish Chary',
     role: 'Chief Editor',
-    initials: 'MC',
+    initials: 'JC',
     color: 'bg-blue-500'
-  },
-  {
-    name: 'Raj Patel',
-    role: 'Senior Science Writer',
-    initials: 'RP',
-    color: 'bg-purple-500'
-  },
-  {
-    name: 'Lucia Torres',
-    role: 'Technology Correspondent',
-    initials: 'LT',
-    color: 'bg-cyan-500'
-  },
-  {
-    name: 'Kwame Asante',
-    role: 'Research Analyst',
-    initials: 'KA',
-    color: 'bg-emerald-500'
   }
 ];
 
@@ -146,7 +128,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.5 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our team</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-8 max-w-5xl mx-auto">
                   {teamMembers.map((member, index) => (
                     <motion.div
                       key={member.name}

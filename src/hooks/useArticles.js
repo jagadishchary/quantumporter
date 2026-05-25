@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import pb from '@/lib/pocketbaseClient.js';
+import { mockArticles } from '@/lib/mockData.js';
 
 export function useArticles(options = {}) {
   const [articles, setArticles] = useState([]);
@@ -52,13 +53,34 @@ export function useArticles(options = {}) {
           filter = filters.join(' && ');
         }
 
-        const records = await pb.collection('news_articles').getFullList({
-          filter: filter || undefined,
-          sort: sortBy,
-          $autoCancel: false
-        });
+        try {
+          const records = await pb.collection('news_articles').getFullList({
+            filter: filter || undefined,
+            sort: sortBy,
+            $autoCancel: false,
+            requestKey: 'fetch-articles'
+          });
 
-        setArticles(records);
+          if (records && records.length > 0) {
+            setArticles(records);
+          } else {
+            // If collection exists but is empty, use mock data as fallback
+            const filteredMock = mockArticles.filter(a => {
+              if (featured !== null && a.featured !== featured) return false;
+              if (category && a.category !== category) return false;
+              return true;
+            });
+            setArticles(filteredMock);
+          }
+        } catch (err) {
+          console.warn('PocketBase fetch failed, using mock data:', err.message);
+          const filteredMock = mockArticles.filter(a => {
+            if (featured !== null && a.featured !== featured) return false;
+            if (category && a.category !== category) return false;
+            return true;
+          });
+          setArticles(filteredMock);
+        }
       } catch (err) {
         console.error('Error fetching articles:', err);
         setError(err.message || 'Failed to fetch articles');
