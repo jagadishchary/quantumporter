@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
@@ -9,6 +8,7 @@ import Footer from '@/components/Footer.jsx';
 import ArticleCard from '@/components/ArticleCard.jsx';
 import ArticleModal from '@/components/ArticleModal.jsx';
 import NewArticleForm from '@/components/NewArticleForm.jsx';
+import SEO from '@/components/SEO.jsx';
 import { useArticles } from '@/hooks/useArticles.js';
 import { Skeleton } from '@/components/ui/skeleton';
 import pb from '@/lib/pocketbaseClient.js';
@@ -26,10 +26,10 @@ export default function NewsFeedPage() {
 
   return (
     <>
-      <Helmet>
-        <title>News Feed - Quantumporter</title>
-        <meta name="description" content="Browse the latest quantum science and technology news articles on Quantumporter." />
-      </Helmet>
+      <SEO 
+        title="News Feed"
+        description="Browse the latest quantum science and technology news articles on Quantumporter."
+      />
 
       <div className="min-h-screen flex flex-col">
         <Header />

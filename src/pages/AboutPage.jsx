@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import SEO from '@/components/SEO.jsx';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Atom, Target, Users, Lightbulb } from 'lucide-react';
 
@@ -37,10 +37,10 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      <Helmet>
-        <title>About - Quantumporter</title>
-        <meta name="description" content="Learn about Quantumporter's mission to deliver accurate, accessible quantum science and technology news." />
-      </Helmet>
+      <SEO 
+        title="About"
+        description="Learn about Quantumporter's mission to deliver accurate, accessible quantum science and technology news."
+      />
 
       <div className="min-h-screen flex flex-col">
         <Header />

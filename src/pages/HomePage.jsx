@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -9,6 +8,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ArticleCard from '@/components/ArticleCard.jsx';
 import ArticleModal from '@/components/ArticleModal.jsx';
+import SEO from '@/components/SEO.jsx';
 import { useArticles } from '@/hooks/useArticles.js';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -18,10 +18,10 @@ export default function HomePage() {
 
   return (
     <>
-      <Helmet>
-        <title>Quantumporter - Quantum Science & Technology News</title>
-        <meta name="description" content="Stay informed with the latest quantum computing, physics, technology, and research news from Quantumporter." />
-      </Helmet>
+      <SEO 
+        title="Home"
+        description="Stay informed with the latest quantum computing, physics, technology, and research news from Quantumporter."
+      />
 
       <div className="min-h-screen flex flex-col">
         <Header />

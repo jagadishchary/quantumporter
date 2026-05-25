@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -8,6 +7,7 @@ import ArticleCard from '@/components/ArticleCard.jsx';
 import ArticleModal from '@/components/ArticleModal.jsx';
 import SearchBar from '@/components/SearchBar.jsx';
 import FilterPanel from '@/components/FilterPanel.jsx';
+import SEO from '@/components/SEO.jsx';
 import { useArticles } from '@/hooks/useArticles.js';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -35,10 +35,10 @@ export default function ArchivesPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Archives - Quantumporter</title>
-        <meta name="description" content="Browse and search through our archive of quantum science and technology articles." />
-      </Helmet>
+      <SEO 
+        title="Archives"
+        description="Browse and search through our archive of quantum science and technology articles."
+      />
 
       <div className="min-h-screen flex flex-col">
         <Header />
